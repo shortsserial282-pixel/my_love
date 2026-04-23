@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ede3e3;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            background-color: rgb(249, 180, 180);
+            padding: 100px;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(21, 174, 234, 0.2);
+            width: 250px;
+            z-index: 2;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(220, 151, 4);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: rgb(248, 193, 90);
+        }
+
+        /* Heart animation */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (10 + Math.random() * 20) + "px";
+            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+
+    <!-- Main container -->
+    <div class="container">
+        <h1>Welcome</h1>
+        <h2>To my heart ❤️</h2>
+        <button onclick="location.href='2nd page.html'">Click Here</button>
+    </div>
+
+</body>
+</html>
