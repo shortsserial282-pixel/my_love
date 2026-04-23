@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Next Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to top, #ffd6e0, #fff);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Balloon Style */
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 60px;
+            height: 80px;
+            background-color: red;
+            border-radius: 50%;
+            animation: rise 8s linear infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #555;
+            top: 80px;
+            left: 50%;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        /* Images floating */
+        .floating-img {
+            position: absolute;
+            width: 100px;
+            border-radius: 15px;
+            animation: floatImg 10s linear infinite;
+        }
+
+        @keyframes floatImg {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Center text */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1>HAPPY BIRTHDAY MY LOVE🎈</h1>
+        <P>You are the reason behind my smile every day. I feel so lucky to have you in my life.
+           I hope your day is filled with happiness, laughter,
+           and everything you love. Stay the same amazing person always 🎂✨</P>
+    </div>
+
+    <script>
+        // Balloon generator
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+
+            const colors = ["red", "blue", "green", "orange", "purple", "pink"];
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            balloon.style.left = Math.random() * 100 + "vw";
+            balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+            document.body.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 8000);
+        }
+
+        setInterval(createBalloon, 400);
+
+        // Image generator
+        const images = [
+            "https://picsum.photos/100?random=1",
+            "https://picsum.photos/100?random=2",
+            "https://picsum.photos/100?random=3",
+            "https://picsum.photos/100?random=4",
+            "https://picsum.photos/100?random=5"
+        ];
+
+        function createImage() {
+            const img = document.createElement("img");
+            img.src = images[Math.floor(Math.random() * images.length)];
+            img.classList.add("floating-img");
+
+            img.style.left = Math.random() * 100 + "vw";
+            img.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+            document.body.appendChild(img);
+
+            setTimeout(() => {
+                img.remove();
+            }, 12000);
+        }
+
+        setInterval(createImage, 800);
+    </script>
+
+</body>
+</html>
